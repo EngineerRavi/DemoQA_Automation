@@ -30,3 +30,4 @@ class TextBoxPage(BasePage):
     def click_submit(self):
         self.scroll_to(self.submit_btn)
         self.click(self.submit_btn)
+        print('testing')
