@@ -30,7 +30,9 @@ pipeline {
     }
 
     post {
+
         always {
+
             publishHTML([
                 reportDir: 'reports',
                 reportFiles: 'report.html',
@@ -40,15 +42,17 @@ pipeline {
                 alwaysLinkToLastBuild: true
             ])
 
+            archiveArtifacts artifacts: 'screenshots/*.png', allowEmptyArchive: true
+
             echo 'Pipeline execution completed'
         }
 
         success {
-            echo 'Tests Passed Successfully ✅'
+            echo 'Tests Passed Successfully'
         }
 
         failure {
-            echo 'Tests Failed ❌ - Check logs'
+            echo 'Tests Failed - Check screenshots and reports'
         }
     }
 }
