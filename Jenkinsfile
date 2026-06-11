@@ -31,6 +31,15 @@ pipeline {
 
     post {
         always {
+            publishHTML([
+                reportDir: 'reports',
+                reportFiles: 'report.html',
+                reportName: 'DemoQA Test Report',
+                keepAll: true,
+                allowMissing: false,
+                alwaysLinkToLastBuild: true
+            ])
+
             echo 'Pipeline execution completed'
         }
 
