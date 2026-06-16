@@ -4,7 +4,7 @@ def test_textbox_submission(setup):
     driver = setup
     driver.get("https://demoqa.com")
 
-    assert "DEMOQA" in driver.page_source
+    assert "demosite" in driver.page_source
 # def test_textbox_form(setup):
 #     driver = setup
 
