@@ -3,6 +3,12 @@ pipeline {
 
     stages {
 
+        stage('Clean Workspace') {
+            steps {
+                cleanWs()
+            }
+        }
+
         stage('Checkout Code') {
             steps {
                 checkout scm
@@ -42,17 +48,20 @@ pipeline {
                 alwaysLinkToLastBuild: true
             ])
 
-            archiveArtifacts artifacts: 'screenshots/*.png', allowEmptyArchive: true
+            archiveArtifacts(
+                artifacts: 'screenshots/*.png',
+                allowEmptyArchive: true
+            )
 
             echo 'Pipeline execution completed'
         }
 
         success {
-            echo 'Tests Passed Successfully'
+            echo 'Tests Passed Successfully ✅'
         }
 
         failure {
-            echo 'Tests Failed - Check screenshots and reports'
+            echo 'Tests Failed ❌ - Check HTML report and screenshots'
         }
     }
 }
